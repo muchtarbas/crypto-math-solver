@@ -96,7 +96,35 @@ int rsa(int p, int q, int e)
     enc(e,n);
     return 0;
 }
-
+//enkripsi elgamal
+int enk(int y,int k,int p )
+{
+	char cipher[50];
+    cout << "Ciphertext : ";
+    int z = strlen(plaintext);
+    for (int i=0; i < z; i++)
+    {
+        int x = plaintext[i];
+        unsigned long int pw = pow(y,k);
+        unsigned long int c = x % p;
+        cipher[i] = c;
+        cout << c << " ";
+    }
+    cout << endl;
+    return 0;
+}
+//elgamal
+int elgamal(int p,int g,int k)
+{
+    cout << "======================" << endl;
+    unsigned long int q=pow(g,k);
+    int y=q%p;
+    cout << "kunci publik : " << y << endl;
+    cout << "Plaintext : ";
+    cin >> plaintext;
+    enk(p,g,k);
+    return 0;
+}
 
 //title banner
 void title()
@@ -165,8 +193,29 @@ int main()
             }
             case 2:
             {
-                cout << "elgamal";
-                break;
+                system("clear");
+                    int p, g, k;
+                    cout << "rsa" << endl;
+                    cout << "================="<< endl;
+                    cout << "input p : ";
+                    cin >> p;
+                    cout << "input g : ";
+                    cin >> g;
+                    cout << "input kunci privat : ";
+                    cin >> k;
+                    elgamal(p,g,k);
+                    cout << endl <<"=================" << endl << endl;
+                    cout << "[back] goto menu" << endl;
+                    cout << "[] go to top" << endl << endl;
+                    cout << "--> ";
+                    cin >> kembali;
+                    if (kembali == "back")
+                    {
+                        goto menu;
+                    }else
+                    {
+                        goto elgamal;
+                    }
             }
             case 3:
             {
