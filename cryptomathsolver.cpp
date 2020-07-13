@@ -251,7 +251,6 @@ int main()
     menu:
         system("clear");
         title();
-	coba_lagi:
         cout<<"[1] Rsa"<<endl;
         cout<<"[2] Elgamal"<<endl;
         cout<<"[3] Pertukaran Kunci Publik Diffie Helman"<<endl;
@@ -423,12 +422,7 @@ int main()
                     {
                         goto prime;
                     }
-            }
-                    default:
-            {
-                cout << "Maaf Inputan Tidak Terdapat Dalam Pilihan" << endl;
-                cout << "Silahkan Coba Lagi \n";
-                goto coba_lagi;
+            
             }
         }
 }
