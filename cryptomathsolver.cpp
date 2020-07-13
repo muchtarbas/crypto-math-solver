@@ -53,14 +53,12 @@ int prime(int num)
    {
       if(num % i == 0) 
 	  {
-         cout<<num<<" is not a prime number" << endl;
-         break;
+        cout<<num<<" is not a prime number"<< endl;
+        return num;
       }
-      else
-      cout<<num<<" is a prime number" << endl;
-      return num;
    }
-   return 0;
+   cout<<num<<" is a prime number" <<endl;
+   return num;
 }
 
 //enc rsa
@@ -279,17 +277,22 @@ int main()
                     rsa(p,q,e);
                     cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl ;
+                    cout << "[0] go to top" << endl ;
                     cout << "[ctrl-c] exit program" << endl << endl;
-                    cout << "--> ";
-                    cin >> kembali;
-                    if (kembali == "back")
-                    {
-                        goto menu;
-                    }else
-                    {
-                        goto rsa;
-                    }
+                    ulangrsa:
+                        cout << "--> ";
+                        cin >> kembali;
+                        if (kembali == "back")
+                        {
+                            goto menu;
+                        }else if (kembali == "0")
+                        {
+                            goto rsa;
+                        }else
+                        {
+                            cout << "input anda salah"<< endl;
+                            goto ulangrsa;
+                        }
             }
             case 2:
             {
@@ -306,17 +309,22 @@ int main()
                     elgamal(p,g,k);
                     cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl ;
+                    cout << "[0] go to top" << endl ;
                     cout << "[ctrl-c] exit program" << endl << endl;
-                    cout << "--> ";
-                    cin >> kembali;
-                    if (kembali == "back")
-                    {
-                        goto menu;
-                    }else
-                    {
-                        goto elgamal;
-                    }
+                    ulangelgamal:
+                        cout << "--> ";
+                        cin >> kembali;
+                        if (kembali == "back")
+                        {
+                            goto menu;
+                        }else if (kembali == "0")
+                        {
+                            goto elgamal;
+                        }else
+                        {
+                            cout << "input anda salah"<< endl;
+                            goto ulangelgamal;
+                        }
             }
             case 3:
             {
@@ -338,17 +346,22 @@ int main()
 				cout << "Kunci Rahasia Bob : " << kpdh(P, G, x, a, y, b, ka, kb) << endl;
 				cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl ;
+                    cout << "[0] go to top" << endl ;
                     cout << "[ctrl-c] exit program" << endl << endl;
-                    cout << "--> ";
-                    cin >> kembali;
-                    if (kembali == "back")
-                    {
-                        goto menu;
-                    }else
-                    {
-                        goto kpdh;
-                    }
+                    ulangkpdh:
+                        cout << "--> ";
+                        cin >> kembali;
+                        if (kembali == "back")
+                        {
+                            goto menu;
+                        }else if (kembali == "0")
+                        {
+                            goto kpdh;
+                        }else
+                        {
+                            cout << "input anda salah"<< endl;
+                            goto ulangkpdh;
+                        }
             }
             case 4:
             {
@@ -365,17 +378,22 @@ int main()
                     cout << "result  : " << modexp(a,b,n);
                     cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl ;
+                    cout << "[0] go to top" << endl ;
                     cout << "[ctrl-c] exit program" << endl << endl;
-                    cout << "--> ";
-                    cin >> kembali;
-                    if (kembali == "back")
-                    {
-                        goto menu;
-                    }else
-                    {
-                        goto modexp;
-                    }
+                    ulangmodexp:
+                        cout << "--> ";
+                        cin >> kembali;
+                        if (kembali == "back")
+                        {
+                            goto menu;
+                        }else if (kembali == "0")
+                        {
+                            goto modexp;
+                        }else
+                        {
+                            cout << "input anda salah"<< endl;
+                            goto ulangmodexp;
+                        }
                     
             }
             case 5:
@@ -391,16 +409,22 @@ int main()
                     cout << "reslut : "<< modInverse(a, n);
                     cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl ;
+                    cout << "[0] go to top" << endl ;
                     cout << "[ctrl-c] exit program" << endl << endl;
-                    cout << "--> ";
-                    cin >> kembali;
-                    if (kembali == "back")                    {
-                        goto menu;
-                    }else
-                    {
-                        goto modinv;
-                    }
+                    ulangmodinv:
+                        cout << "--> ";
+                        cin >> kembali;
+                        if (kembali == "back")
+                        {
+                            goto menu;
+                        }else if (kembali == "0")
+                        {
+                            goto modinv;
+                        }else
+                        {
+                            cout << "input anda salah"<< endl;
+                            goto ulangmodinv;
+                        }
             }
             case 6:
             {
@@ -412,17 +436,22 @@ int main()
                     prime(num);
                     cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl ;
+                    cout << "[0] go to top" << endl ;
                     cout << "[ctrl-c] exit program" << endl << endl;
-                    cout << "--> ";
-                    cin >> kembali;
-                    if (kembali == "back")                    
-                    {
-                        goto menu;
-                    }else
-                    {
-                        goto prime;
-                    }
+                    ulangprime:
+                        cout << "--> ";
+                        cin >> kembali;
+                        if (kembali == "back")
+                        {
+                            goto menu;
+                        }else if (kembali == "0")
+                        {
+                            goto prime;
+                        }else
+                        {
+                            cout << "input anda salah"<< endl;
+                            goto ulangprime;
+                        }
             }
                     default:
             {
