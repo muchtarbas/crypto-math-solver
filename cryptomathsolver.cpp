@@ -126,6 +126,29 @@ int elgamal(int p,int g,int k)
     return 0;
 }
 
+//rumus kunci publik dh
+long long int rumusk(long long int a, long long int b, long long int P) 
+{ 
+	long long int t;
+	if (b == 1) 
+		return a; 
+	t = rumusk(a, b/2, P);
+	if(b%2==0)
+		return (t*t)%P;
+	else
+		return (((t*t)%P)*a)%P;
+}
+
+//pertukaran kunci publik dh
+long long int kpdh (long long int P, long long int G, long long int x, long long int a, long long int y, long long int b, long long int ka, long long int kb)
+{
+	x = rumusk(G, a, P);
+	y = rumusk(G, b, P);
+	
+	ka = rumusk(y, a, P);
+	kb = rumusk(x, b, P);
+}
+
 //title banner
 void title()
 {
@@ -154,7 +177,7 @@ int main()
 	coba_lagi:
         cout<<"[1] Rsa"<<endl;
         cout<<"[2] Elgamal"<<endl;
-        cout<<"[3] Curva Eliptik"<<endl;
+        cout<<"[3] Pertukaran Kunci Publik Diffie Helman"<<endl;
         cout<<"[4] Modular Exponen"<<endl;
         cout<<"[5] Modular Inverse"<<endl;
         cout<<"[6] Prime Check"<<endl;
@@ -195,7 +218,7 @@ int main()
             {
                 system("clear");
                     int p, g, k;
-                    cout << "rsa" << endl;
+                    cout << "Elgamal" << endl;
                     cout << "================="<< endl;
                     cout << "input p : ";
                     cin >> p;
@@ -219,8 +242,34 @@ int main()
             }
             case 3:
             {
-                cout << "kurva";
-                break;
+                kpdh:
+				system("clear");
+				cout << "##### Pertukaran Kunci Publik Diffie Helman #####" << endl;
+				cout << "** Nilai P dan Kunci Privat bersifat Bilangan Prima, P > Kunci Privat **" << endl;
+				cout << "================="<< endl;
+				long long int P, G, x, a, y, b, ka, kb; 
+				cout << "Input Nilai P (Bilangan Pemodulo) : ";
+				cin >> P;
+				cout << "Input Nilai G : ";
+				cin >> G;
+				cout << "Input Nilai Kunci Privat(Alice) : ";
+				cin >> a;
+				cout << "Input Nilai Kunci Privat(Bob) : ";
+				cin >> b;
+				cout << "Kunci Rahasia Alice : " << kpdh(P, G, x, a, y, b, ka, kb) << endl;
+				cout << "Kunci Rahasia Bob : " << kpdh(P, G, x, a, y, b, ka, kb) << endl;
+				cout << endl <<"=================" << endl << endl;
+                    cout << "[back] goto menu" << endl;
+                    cout << "[] go to top" << endl << endl;
+                    cout << "--> ";
+                    cin >> kembali;
+                    if (kembali == "back")
+                    {
+                        goto menu;
+                    }else
+                    {
+                        goto kpdh;
+                    }
             }
             case 4:
             {
