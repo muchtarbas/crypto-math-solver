@@ -33,12 +33,12 @@ int modexp(int a, unsigned int b, int n)
 } 
 
 //modinv
-int modInverse(int a, int m) 
+int modInverse(int a, int n) 
 { 
-	a = a%m; 
-	for (int x=1; x<m; x++)
+	a = a%n; 
+	for (int x=1; x<n; x++)
     {
-        if ((a*x) % m == 1)
+        if ((a*x) % n == 1)
         {
             return x;
         }
@@ -169,6 +169,82 @@ void title()
 )" << endl;
 }
 
+//rsa title
+void rsa_title()
+{
+    cout << R"(
+
+____/\\\\\\\\\_________/\\\\\\\\\\\_______/\\\\\\\\\____        
+ __/\\\///////\\\_____/\\\/////////\\\___/\\\\\\\\\\\\\__       
+  _\/\\\_____\/\\\____\//\\\______\///___/\\\/////////\\\_      
+   _\/\\\\\\\\\\\/______\////\\\_________\/\\\_______\/\\\_     
+    _\/\\\//////\\\_________\////\\\______\/\\\\\\\\\\\\\\\_    
+     _\/\\\____\//\\\___________\////\\\___\/\\\/////////\\\_   
+      _\/\\\_____\//\\\___/\\\______\//\\\__\/\\\_______\/\\\_  
+       _\/\\\______\//\\\_\///\\\\\\\\\\\/___\/\\\_______\/\\\_ 
+        _\///________\///____\///////////_____\///________\///__
+    )" << endl;
+}
+
+//elgamal title
+void el_title()
+{
+    cout << R"(
+  ______ _      _____          __  __          _      
+ |  ____| |    / ____|   /\   |  \/  |   /\   | |     
+ | |__  | |   | |  __   /  \  | \  / |  /  \  | |     
+ |  __| | |   | | |_ | / /\ \ | |\/| | / /\ \ | |     
+ | |____| |___| |__| |/ ____ \| |  | |/ ____ \| |____ 
+ |______|______\_____/_/    \_\_|  |_/_/    \_\______|                                           
+    )" << endl;
+}
+
+//modinv title
+void modinv_title()
+{
+    cout << R"(
+
+          /\       __   __  __           _   _   _ 
+     /\  |/\|     /_ | |  \/  |         | | | \ | |
+    /  \     ______| | | \  / | ___   __| | |  \| |
+   / /\ \   |______| | | |\/| |/ _ \ / _` | | . ` |
+  / ____ \         | | | |  | | (_) | (_| | | |\  |
+ /_/    \_\        |_| |_|  |_|\___/ \__,_| |_| \_|
+                    
+                    Modular Inversion
+    )" << endl;
+}
+
+//modexp title
+void modexp_title()
+{
+    cout << R"(
+
+     _   /\ ____    __  __           _   _   _ 
+    / \ |/\| __ )  |  \/  | ___   __| | | \ | |
+   / _ \   |  _ \  | |\/| |/ _ \ / _` | |  \| |
+  / ___ \  | |_) | | |  | | (_) | (_| | | |\  |
+ /_/   \_\ |____/  |_|  |_|\___/ \__,_| |_| \_|
+
+               Modular Exponentation
+)" << endl;
+}
+
+//prime title
+void prime_title()
+{
+    cout << R"(                                                                                                                                     
+                      ,,                            
+`7MM"""Mq.            db                            
+  MM   `MM.                                         
+  MM   ,M9 `7Mb,od8 `7MM  `7MMpMMMb.pMMMb.  .gP"Ya  
+  MMmmdM9    MM' "'   MM    MM    MM    MM ,M'   Yb 
+  MM         MM       MM    MM    MM    MM 8M"""""" 
+  MM         MM       MM    MM    MM    MM YM.    , 
+.JMML.     .JMML.   .JMML..JMML  JMML  JMML.`Mbmmd'                                                                                 
+)" << endl;
+}
+
 int main()
 {
     menu:
@@ -180,7 +256,7 @@ int main()
         cout<<"[3] Pertukaran Kunci Publik Diffie Helman"<<endl;
         cout<<"[4] Modular Exponen"<<endl;
         cout<<"[5] Modular Inverse"<<endl;
-        cout<<"[6] Prime Check"<<endl;
+        cout<<"[6] Prime Number"<<endl;
         cout << endl;
         cout << "--> ";
         cin >> pilih;
@@ -192,8 +268,7 @@ int main()
                 rsa:
                     system("clear");
                     int p, q, e;
-                    cout << "rsa" << endl;
-                    cout << "================="<< endl;
+                    rsa_title();
                     cout << "input p : ";
                     cin >> p;
                     cout << "input q : ";
@@ -203,7 +278,8 @@ int main()
                     rsa(p,q,e);
                     cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl << endl;
+                    cout << "[] go to top" << endl ;
+                    cout << "[ctrl-c] exit program" << endl << endl;
                     cout << "--> ";
                     cin >> kembali;
                     if (kembali == "back")
@@ -216,10 +292,10 @@ int main()
             }
             case 2:
             {
-                system("clear");
+                elgamal:
+                    system("clear");
                     int p, g, k;
-                    cout << "Elgamal" << endl;
-                    cout << "================="<< endl;
+                    el_title();
                     cout << "input p : ";
                     cin >> p;
                     cout << "input g : ";
@@ -229,7 +305,8 @@ int main()
                     elgamal(p,g,k);
                     cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl << endl;
+                    cout << "[] go to top" << endl ;
+                    cout << "[ctrl-c] exit program" << endl << endl;
                     cout << "--> ";
                     cin >> kembali;
                     if (kembali == "back")
@@ -275,8 +352,7 @@ int main()
             {
                 modexp:
                     system("clear");
-                    cout << "##### Modular Eksponen #####" << endl;
-                    cout << "================="<< endl;
+                    modexp_title();
                     int a,b,n;
                     cout << "input a : ";
                     cin >> a;
@@ -284,10 +360,11 @@ int main()
                     cin >> b;
                     cout << "input n : ";
                     cin >> n;
-                    cout << "hasil : " << modexp(a,b,n);
+                    cout << "result  : " << modexp(a,b,n);
                     cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl << endl;
+                    cout << "[] go to top" << endl ;
+                    cout << "[ctrl-c] exit program" << endl << endl;
                     cout << "--> ";
                     cin >> kembali;
                     if (kembali == "back")
@@ -303,16 +380,17 @@ int main()
             {
                 modinv:
                     system("clear");
-                    cout << "modinv" << endl;
-                    int a, m;
-                    cout << "a = ";
+                    modinv_title();
+                    int a, n;
+                    cout << "a : ";
                     cin >> a;
-                    cout << "m = ";
-                    cin >> m;
-                    cout << modInverse(a, m);
+                    cout << "n : ";
+                    cin >> n;
+                    cout << "reslut : "<< modInverse(a, n);
                     cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl << endl;
+                    cout << "[] go to top" << endl ;
+                    cout << "[ctrl-c] exit program" << endl << endl;
                     cout << "--> ";
                     cin >> kembali;
                     if (kembali == "back")                    {
@@ -326,18 +404,18 @@ int main()
             {
                 prime :
                     system("clear");
-                    cout << "##### Prime Check #####" << endl;
-                    cout << "||||||||||||||||||||" << endl;
-                    cout << "VVVVVVVVVVVVVVVVVVVV" << endl;
+                    prime_title();
                     cout<<"Masukkan Angka : ";
                     cin>>num;
                     prime(num);
                     cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl << endl;
+                    cout << "[] go to top" << endl ;
+                    cout << "[ctrl-c] exit program" << endl << endl;
                     cout << "--> ";
                     cin >> kembali;
-                    if (kembali == "back")                    {
+                    if (kembali == "back")                    
+                    {
                         goto menu;
                     }else
                     {
