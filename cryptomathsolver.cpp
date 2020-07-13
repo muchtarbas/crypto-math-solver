@@ -147,6 +147,7 @@ long long int kpdh (long long int P, long long int G, long long int x, long long
 	
 	ka = rumusk(y, a, P);
 	kb = rumusk(x, b, P);
+    return ka,kb;
 }
 
 //title banner
@@ -337,7 +338,8 @@ int main()
 				cout << "Kunci Rahasia Bob : " << kpdh(P, G, x, a, y, b, ka, kb) << endl;
 				cout << endl <<"=================" << endl << endl;
                     cout << "[back] goto menu" << endl;
-                    cout << "[] go to top" << endl << endl;
+                    cout << "[] go to top" << endl ;
+                    cout << "[ctrl-c] exit program" << endl << endl;
                     cout << "--> ";
                     cin >> kembali;
                     if (kembali == "back")
